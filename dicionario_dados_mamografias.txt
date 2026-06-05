@@ -1,0 +1,162 @@
+===============================================================================
+DICIONÁRIO DE DADOS - MICRODADOS DO SISCAN (MAMOGRAFIA POR PACIENTE)
+===============================================================================
+
+Este arquivo descreve o significado das colunas renomeadas pelo script de 
+tratamento de dados do SISCAN para o ano de 2024.
+
+-------------------------------------------------------------------------------
+1. IDENTIFICAÇÃO E TEMPORALIDADE
+-------------------------------------------------------------------------------
+
+ID_Sequencial_Exame (Original: CO_SEQ_SISCAN_MAMOGRAFIA_PACNT)
+    - Identificador único e sequencial de controle interno do registro do 
+      exame no banco de dados do SISCAN.
+
+ID_Anonimizado_Paciente (Original: CO_PACIENTE)
+    - Código hash gerado pelo DATASUS para anonimizar a identidade da paciente, 
+      permitindo rastrear se a mesma mulher realizou múltiplos exames sem 
+      expor dados pessoais (como CPF ou CNS).
+
+Numero_Requisicao (Original: REQ)
+    - Número do formulário físico de requisição preenchido pelo profissional de 
+      saúde no momento da solicitação do exame.
+
+Ano_Competencia (Original: NU_ANO_COMPETENCIA)
+    - Ano em que o exame foi processado e faturado no sistema do SUS.
+
+Ano_Mes_Competencia (Original: NU_ANO_MES_COMPETENCIA)
+    - Ano e mês (formato AAAAMM) referentes à competência de processamento 
+      daquele registro no sistema.
+
+Ano_Resultado (Original: CO_ANO_RESULTADO)
+    - Ano em que o laudo do exame foi efetivamente assinado e liberado pelo 
+      médico radiologista.
+
+Ano_Mes_Resultado (Original: CO_ANO_MES_RESULTADO)
+    - Ano e mês (formato AAAAMM) em que o resultado/laudo do exame foi emitido.
+
+
+-------------------------------------------------------------------------------
+2. DADOS GEOGRÁFICOS E DEMOGRÁFICOS
+-------------------------------------------------------------------------------
+
+UF_Residencia_Sigla (Original: SG_UF_RESIDENCIA)
+    - Sigla do estado (Unidade da Federação) onde a paciente reside (ex: RS, PI).
+
+UF_Residencia_Codigo (Original: CO_UF_RESIDENCIA)
+    - Código numérico oficial do IBGE correspondente ao estado de residência 
+      da paciente.
+
+Municipio_Residencia_Codigo (Original: CO_MUN_RESIDENCIA)
+    - Código de 6 dígitos do IBGE correspondente ao município onde a paciente 
+      mora.
+
+Sexo (Original: SG_SEXO)
+    - Sexo biológico da paciente registrado na ficha (F para Feminino, M para Masculino).
+
+Faixa_Etaria (Original: CO_FAIXA_ETARIA_PACIENTE)
+    - Idade da paciente agrupada em faixas etárias estruturadas (decodificada 
+      pelo arquivo Fetaria.CNV).
+
+Raca_Cor (Original: CO_RACA_COR)
+    - Raça ou cor da pele autodeclarada pela paciente, conforme categorias do 
+      IBGE (Branca, Preta, Parda, Amarela, Indígena, Ignorado).
+
+Escolaridade (Original: CO_ESCOLARIDADE)
+    - Último nível de instrução/grau de estudo formal alcançado pela paciente.
+
+
+-------------------------------------------------------------------------------
+3. HISTÓRICO CLÍNICO E INDICAÇÃO DO EXAME
+-------------------------------------------------------------------------------
+
+Indicacao_Clinica (Original: CO_IND_CLINICA)
+    - Motivo principal que gerou a solicitação do exame. Divide-se essencialmente 
+      em Rastreamento (exame de rotina preventiva) ou Diagnóstica (investigação 
+      de sintomas detectados previamente).
+
+Tipo_Mamografia_Rastreamento (Original: TP_MAMOGRAFIA_RASTREAMENT)
+    - Classificação do rastreamento. Indica se a paciente pertence à população-alvo 
+      padrão do Ministério da Saúde (50 a 69 anos), se pertence a outra faixa etária 
+      ou se possui fatores de risco acentuados.
+
+Risco_Elevado_Cancer (Original: TP_RESP_APRES_RISC_ELEV_CANCER)
+    - Resposta do formulário indicando se a paciente possui histórico familiar forte 
+      de câncer de mama (mãe, irmã ou filha com a doença antes dos 50 anos) ou de 
+      câncer de ovário.
+
+Exame_Clinico_Anterior (Original: TP_RESP_ANT_MAMA_EXA_PROF_SAUD)
+    - Informação se a paciente teve suas mamas examinadas por um profissional de 
+      saúde (médico ou enfermeiro) antes da solicitação desta mamografia.
+
+Fez_Mamografia_Anterior (Original: TP_RESP_FEZ_MAMOGRA_ALGUMA_VEZ)
+    - Resposta indicando se a paciente já realizou alguma mamografia na vida 
+      antes deste procedimento atual.
+
+Tempo_Mamografia_Anterior (Original: CO_TEMPO_MAMO_ANTERIOR)
+    - Caso já tenha feito antes, indica o intervalo de tempo decorrido desde a 
+      última mamografia realizada (ex: menos de 1 ano, de 1 a 2 anos, mais de 2 anos).
+
+Nodulo_Caroco_Requisicao (Original: TP_NODULO_CAROCO_MAMA)
+    - Registro na ficha de anamnese se a paciente já apresentava um nódulo ou 
+      caroço palpável na mama no momento da consulta inicial.
+
+
+-------------------------------------------------------------------------------
+4. ACHADOS CLÍNICOS E AVALIAÇÃO DA PELE/LINFONODOS
+-------------------------------------------------------------------------------
+
+Mama_Pele_Direita / Mama_Pele_Esquerda (Original: TP_MAMA_PELE_DIR / _ESQ)
+    - Avaliação radiológica das características da pele da respectiva mama 
+      (Normal, Espessada, Retraída, etc.).
+
+Tipo_Mama_Direita / Tipo_Mama_Esquerda (Original: TP_MAMA_DIR / _ESQ)
+    - Classificação do tecido e da composição da densidade mamária da respectiva 
+      mama (Predominantemente adiposa, Densidade esparsa, Heterogeneamente densa, 
+      Extremamente densa).
+
+Linfonodo_Axilar_Direito / Linfonodo_Axilar_Esquerdo (Original: TP_LINFONODO_DIR / _ESQ)
+    - Situação dos linfonodos localizados na região axilar correspondente 
+      (Normais, Aumentados de tamanho, Densos, Calcificados, etc.).
+
+Tamanho_Nodulo (Original: NU_TAMANHO_NODULO)
+    - Caso um nódulo visível tenha sido detectado e medido no laudo, armazena o 
+      tamanho em milímetros ou faixas de tamanho estruturadas.
+
+
+-------------------------------------------------------------------------------
+5. RESULTADO E CONDUTAS CLÍNICAS
+-------------------------------------------------------------------------------
+
+Categoria_BI_RADS (Original: CO_LAUDO)
+    - O resultado definitivo e mais importante do exame. Utiliza a padronização 
+      internacional BI-RADS (Breast Imaging Reporting and Data System), variando de 
+      0 a 6 para ditar se o exame é normal, benigno, suspeito ou altamente suspeito.
+
+Recomendacao_Direita / Recomendacao_Esquerda (Original: TP_RECOMENDACAO_DIREITA / _ESQUERDA)
+    - A conduta clínica e o acompanhamento médico sugeridos especificamente para 
+      cada uma das mamas baseando-se nos achados locais (ex: repetir em 2 anos, 
+      repetir em 6 meses, urgência para biópsia).
+
+Codigo_Recomendacao (Original: CO_RECOMENDACAO)
+    - Código geral consolidado da conduta final recomendada para o caso da paciente, 
+      Geralmente prevalece a conduta de maior complexidade encontrada entre as duas mamas.
+
+
+-------------------------------------------------------------------------------
+6. INDICADORES DE TEMPO E FLUXO DO SISTEMA
+-------------------------------------------------------------------------------
+
+Intervalo_Solicitacao (Original: CO_INTERVALO_SOLICITACAO)
+    - Tempo decorrido entre a data em que o médico solicitou o exame e a data em 
+      que o exame foi efetivamente realizado pela paciente na unidade de saúde.
+
+Intervalo_Resultado (Original: CO_INTERVALO_RESULTADO)
+    - Tempo decorrido entre a realização física do exame de mamografia e a data 
+      da digitação/emissão do laudo radiológico final no sistema.
+
+Tempo_Exame (Original: CO_TEMPO_EXAME)
+    - Indicador de tempo total do ciclo regulatório (soma dos intervalos de 
+      solicitação, execução e entrega do laudo).
+===============================================================================
